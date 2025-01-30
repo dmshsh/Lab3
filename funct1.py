@@ -18,11 +18,16 @@ def filt(list):
     for x in list:
         if is_prime(x):
             print(x)
-from itertools import permutations
-def print_permutations(user_input):
-    perm_list = permutations(user_input)
-    for perm in perm_list:
-        print(''.join(perm))
+def permutations(s, current=""):
+    if len(s) == 0:
+        print(current) 
+        return
+    for i in range(len(s)):
+        ch = s[i]  
+        remaining = s[:i] + s[i+1:]  
+        permutations(remaining, current + ch)  
+a = 'abcd'
+permutations(a)
 def reverse_words(sentence):
     reversed_sentence = ' '.join(sentence.split()[::-1])
     return reversed_sentence
